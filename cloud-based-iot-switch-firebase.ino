@@ -14,7 +14,6 @@
 
 int val;                                                               // State variable
 
-
 void setup()
 {
   Serial.begin(9600);                                                   
