@@ -19,9 +19,7 @@ void setup()
 {
   Serial.begin(9600);                                                   
   pinMode(Relay, OUTPUT);
-
   digitalWrite(Relay, HIGH);
-
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("Connecting...");
   while (WiFi.status() != WL_CONNECTED) {
@@ -46,8 +44,7 @@ void firebasereconnect()
 
 void loop()
 {
-  if (Firebase.failed())
-  {
+if (Firebase.failed()) {
     Serial.print("Failed to connect:");
     Serial.println(Firebase.error());
     firebasereconnect();
@@ -56,16 +53,12 @@ void loop()
 
 val = Firebase.getString("S1").toInt();                               // Reading the status of variable 'S1' from the firebase to take respective actions of switching on or off the relay.
 
-  if (val == 1)                                                     
-  {
+if (val == 1) {
     digitalWrite(Relay, LOW);
     Serial.println("light 1 ON");
   }
-  else if (val == 0)                                                 
-  {
+else if (val == 0) {
     digitalWrite(Relay, HIGH);
     Serial.println("light 1 OFF");
   }
-
-
 }
